@@ -1,4 +1,4 @@
-var myApp = angular.module("myApp",[]);//no dependencies
+/*var myApp = angular.module("myApp",[]);//no dependencies
 
 myApp.controller("FirstCtrl",FirstCtrl);
 myApp.controller("SecondCtrl",SecondCtrl);
@@ -82,6 +82,60 @@ myApp.directive("enter",function(){
                 elem.bind("mouseenter",function(){
                         scope.$apply(attrs.enter);
                 })
+        }
+
+});
+*/
+
+var myApp = angular.module("superApp",[]);
+
+myApp.directive("superhero",function(){
+
+        return{
+                restrict:"E",
+                scope:{},
+                controller:function($scope){
+                        $scope.abilities = [];
+                        this.addStrength = function(){
+                                $scope.abilities.push("strength");
+                        };
+                        this.addSpeed = function(){
+                                $scope.abilities.push("speed");
+                        };
+                },
+
+                link: function(scope,elem,attrs){
+                        elem.bind("mouseenter",function(){
+                                console.log(scope.abilities);
+                        });
+                }
+        }
+
+});
+
+myApp.directive("strength",function(){
+
+        return{
+                require:"superhero",
+
+
+                link: function(scope,elem,attrs,sCtrl){
+                        sCtrl.addStrength();
+                }
+        }
+
+});
+
+myApp.directive("speed",function(){
+
+        return{
+                require:"superhero",
+
+
+                link: function(scope,elem,attrs,sCtrl){
+                        sCtrl.addSpeed();
+                }
+
         }
 
 });
