@@ -141,7 +141,7 @@ myApp.directive("speed",function(){
 });
 
 
- */
+
 var myApp = angular.module('choreApp',[]);
 
 myApp.controller("ChoreCtrl",function($scope){
@@ -159,3 +159,22 @@ myApp.directive("kid",function(){
                 template:"<input type='text' ng-model='chore'> {{chore}} <div ng-click='done({chore:chore})'>I am done!</div>"
         }
 })
+ */
+
+var myApp = angular.module("drinkApp",[]);
+
+myApp.controller("drinkCtrl",function($scope){
+
+        $scope.ctrlFlavour = "Strawberry";
+
+});
+
+myApp.directive("drink",function(){
+
+        return {
+                scope:{
+                        flavour:"@"
+                },
+                template:"<div>{{flavour}}</div>"
+        }
+});
