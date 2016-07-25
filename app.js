@@ -161,20 +161,19 @@ myApp.directive("kid",function(){
 })
  */
 
-var myApp = angular.module("dialApp",[]);
+var myApp = angular.module("panelApp",[]);
 
-myApp.controller("dialCtrl",function($scope){
+myApp.controller("panelCtrl",function($scope){
 
-        $scope.callNow = function(message){alert("I'm calling: "+message);}
 
 });
 
-myApp.directive("dial",function(){
+myApp.directive("panel",function(){
 
-        return {
-                scope:{
-                        phone:"&"
-                },
-                template:"<input ng-model='value'><div style='cursor:pointer;font-weight:bold;' ng-click='phone({message:value})'>Click to call</div>"
-        }
+      return {
+              restrict:"E",
+              transclude:true,
+              template:"<div>he <div ng-transclude></div></div>"
+      }
+
 });
