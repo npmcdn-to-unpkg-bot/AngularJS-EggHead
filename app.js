@@ -161,21 +161,25 @@ myApp.directive("kid",function(){
 })
  */
 
-var myApp = angular.module("panelApp",[]);
+var myApp = angular.module("app",[]);
 
 myApp.controller("panelCtrl",function($scope){
 
-    this.sayHi = function(){alert("Hello my dear friend!")};
-    $scope.AppCtrl = this;
-
 });
 
-myApp.directive("panel",function(){
+myApp.directive("zippy",function(){
 
       return {
               restrict:"E",
               transclude:true,
-              template:"<div>he <div ng-transclude></div></div>"
+              scope:{title:"@"},
+              template:"<h3 ng-click='toggleContent()'>{{title}}</h3><div ng-transclude ng-show='isContentVisible'></div>",
+                link: function(scope,elem,attrs){
+                    scope.isContentVisible = true;
+                    scope.toggleContent = function(){
+                        scope.isContentVisible = !scope.isContentVisible;
+                    }
+                }
       }
 
 });
