@@ -161,20 +161,20 @@ myApp.directive("kid",function(){
 })
  */
 
-var myApp = angular.module("drinkApp",[]);
+var myApp = angular.module("dialApp",[]);
 
-myApp.controller("drinkCtrl",function($scope){
+myApp.controller("dialCtrl",function($scope){
 
-        $scope.ctrlFlavour = "Strawberry";
+        $scope.callNow = function(message){alert("I'm calling: "+message);}
 
 });
 
-myApp.directive("drink",function(){
+myApp.directive("dial",function(){
 
         return {
                 scope:{
-                        flavour:"="
+                        phone:"&"
                 },
-                template:"<input ng-model='flavour'>"
+                template:"<input ng-model='value'><div style='cursor:pointer;font-weight:bold;' ng-click='phone({message:value})'>Click to call</div>"
         }
 });
