@@ -166,9 +166,16 @@ var myApp = angular.module("app",[]);
 myApp.controller("panelCtrl",function($scope){
 
 });
+myApp.run(function($templateCache){
+    $templateCache.put("zippy.html","<head><meta charset='utf-8'></head> \
+        <div> \
+        Total zippyfication! yeah! \
+    <div> ¯\\_(ツ)_/¯</div> \
+    <h3 ng-click='toggleContent()'>{{title}}</h3><div ng-transclude ng-show='isContentVisible'></div> \
+        </div>");
+});
 
-myApp.directive("zippy",function(){
-
+myApp.directive("zippy",function($templateCache){
       return {
               restrict:"E",
               transclude:true,
