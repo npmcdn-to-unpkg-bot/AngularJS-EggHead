@@ -165,6 +165,8 @@ var myApp = angular.module("panelApp",[]);
 
 myApp.controller("panelCtrl",function($scope){
 
+    this.sayHi = function(){alert("Hello my dear friend!")};
+    $scope.AppCtrl = this;
 
 });
 
