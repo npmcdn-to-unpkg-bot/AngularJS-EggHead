@@ -164,22 +164,23 @@ myApp.directive("kid",function(){
 var myApp = angular.module("app",["ngRoute"]);
 
 myApp.config(function($routeProvider){
-    $routeProvider.when('/',
-        {
-            templateUrl:"app.html",
-            controller:"appCtrl"
-        })
-        .when('/hz',{
-            template:"he he"
-        })
-        .otherwise({
-            template:"not found!"
-        });
+    $routeProvider.when('/',{
+        template:"He he he",
+        controller:"appCtrl",
+        resolve:{
+            app:function($q,$timeout){
+                var defer = $q.defer();
+                $timeout(function(){ defer.resolve();},2000);
 
+                return defer.promise;
+            }
+        }
+    });
 
 });
-myApp.controller("appCtrl",function($scope){
+myApp.controller("appCtrl",function($scope,$routeParams){
     $scope.model = {
-        message: "routing ng-view"
+        message: "address: "+
+        $routeParams.country+ " " + $routeParams.city
     }
 });
