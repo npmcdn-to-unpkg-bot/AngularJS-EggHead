@@ -1,186 +1,38 @@
-/*var myApp = angular.module("myApp",[]);//no dependencies
-
-myApp.controller("FirstCtrl",FirstCtrl);
-myApp.controller("SecondCtrl",SecondCtrl);
-myApp.controller("AvengersCtrl",AvengersCtrl);
-
-myApp.factory('Data', function(){
-
-        return {message: "I' data from a service"}
-
-});
-
-myApp.factory('Avengers', function(){
-
-        var Avengers = {};
-        Avengers.cast = [{name:"Steve",character:"Padolsky"},{name:"John",character:"Malkovych"},{name:"Stefany",character:"Green"}];
-        return Avengers;
-
-});
-
-myApp.filter('reversed', function(Data){
-
-        return function(text){
-                return text.split("").reverse().join("") + Data.message;
-        };
-
-});
-
-
-myApp.directive("leave",function(){
-
-        return function(scope,element,attrs){
-                element.bind("mouseleave",function(){
-                        element.removeClass("leave "+ attrs.enter);
-                });
-        }
-
-});
-
-myApp.directive('superhero',function(){
-
-        return {
-                restrict:"E",
-                template:"<div>Here is the superhero directive</div>"
-        }
-
-})
-
-function FirstCtrl($scope, Data){
-
-        $scope.data = Data;
-
-}
-
-function SecondCtrl($scope,Data){
-
-        $scope.data = Data;
-
-        $scope.reversedMessage = function(message){
-               return message.split("").reverse().join("");
-        }
-
-}
-
-function AvengersCtrl($scope,Avengers){
-
-        $scope.avengers = Avengers;
-
-}
-
-myApp.controller("AppCtrl",function($scope){
-
-        $scope.loadMoreTweets = function(){
-                alert("Loading more twets!");
-        }
-
-});
-
-myApp.directive("enter",function(){
-
-        return function(scope,elem,attrs){
-                elem.bind("mouseenter",function(){
-                        scope.$apply(attrs.enter);
-                })
-        }
-
-});
-
-
-var myApp = angular.module("superApp",[]);
-
-myApp.directive("superhero",function(){
-
-        return{
-                restrict:"E",
-                scope:{},
-                controller:function($scope){
-                        $scope.abilities = [];
-                        this.addStrength = function(){
-                                $scope.abilities.push("strength");
-                        };
-                        this.addSpeed = function(){
-                                $scope.abilities.push("speed");
-                        };
-                },
-
-                link: function(scope,elem,attrs){
-                        elem.bind("mouseenter",function(){
-                                console.log(scope.abilities);
-                        });
-                }
-        }
-
-});
-
-myApp.directive("strength",function(){
-
-        return{
-                require:"superhero",
-
-
-                link: function(scope,elem,attrs,sCtrl){
-                        sCtrl.addStrength();
-                }
-        }
-
-});
-
-myApp.directive("speed",function(){
-
-        return{
-                require:"superhero",
-
-
-                link: function(scope,elem,attrs,sCtrl){
-                        sCtrl.addSpeed();
-                }
-
-        }
-
-});
-
-
-
-var myApp = angular.module('choreApp',[]);
-
-myApp.controller("ChoreCtrl",function($scope){
-        $scope.logChore = function(chore){
-                alert(chore+" is done!");
-        }
-});
-
-myApp.directive("kid",function(){
-        return {
-                restrict:"E",
-                scope:{
-                        done:"&"
-                },
-                template:"<input type='text' ng-model='chore'> {{chore}} <div ng-click='done({chore:chore})'>I am done!</div>"
-        }
-})
- */
 
 var myApp = angular.module("app",["ngRoute"]);
 
 myApp.config(function($routeProvider){
     $routeProvider.when('/',{
-        template:"He he he",
-        controller:"appCtrl",
+        templateUrl:"app.html",
+        controller:"viewCtrl",
         resolve:{
-            app:function($q,$timeout){
-                var defer = $q.defer();
-                $timeout(function(){ defer.resolve();},2000);
-
-                return defer.promise;
-            }
+           loadData:myViewCtrl.loadData
         }
     });
 
 });
-myApp.controller("appCtrl",function($scope,$routeParams){
+myApp.controller("appCtrl",function($rootScope){
+
+    $rootScope.$on('$routeChangeError',function(event,current,previous,rejection){
+        console.log(rejection);
+    });
+
+   
+});
+
+
+var myViewCtrl = myApp.controller("viewCtrl",function($scope){
     $scope.model = {
-        message: "address: "+
-        $routeParams.country+ " " + $routeParams.city
+        message: "Hi!"
     }
 });
+
+myViewCtrl.loadData = function($q,$timeout){
+
+    var defer = $q.defer();
+    $timeout(function(){
+        defer.reject("Failed to load data");
+    },2000);
+    return defer.promise;
+
+}
