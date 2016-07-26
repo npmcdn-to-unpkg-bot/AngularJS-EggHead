@@ -161,32 +161,20 @@ myApp.directive("kid",function(){
 })
  */
 
-var myApp = angular.module("app",[]);
+var myApp = angular.module("app",["ngRoute"]);
 
-myApp.controller("panelCtrl",function($scope){
+myApp.config(function($routeProvider){
+    $routeProvider.when('/',
+        {
+            templateUrl:"app.html",
+            controller:"appCtrl"
+        }
+    );
+
 
 });
-myApp.run(function($templateCache){
-    $templateCache.put("zippy.html","<head><meta charset='utf-8'></head> \
-        <div> \
-        Total zippyfication! yeah! \
-    <div> ¯\\_(ツ)_/¯</div> \
-    <h3 ng-click='toggleContent()'>{{title}}</h3><div ng-transclude ng-show='isContentVisible'></div> \
-        </div>");
-});
-
-myApp.directive("zippy",function($templateCache){
-      return {
-              restrict:"E",
-              transclude:true,
-              scope:{title:"@"},
-              templateUrl:"zippy.html",
-                link: function(scope,elem,attrs){
-                    scope.isContentVisible = true;
-                    scope.toggleContent = function(){
-                        scope.isContentVisible = !scope.isContentVisible;
-                    }
-                }
-      }
-
+myApp.controller("appCtrl",function($scope){
+    $scope.model = {
+        message: "routing ng-view"
+    }
 });

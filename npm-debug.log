@@ -1,0 +1,107 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'angular-route.js' ]
+2 info using npm@2.15.8
+3 info using node@v4.4.7
+4 verbose install initial load of /home/dzianisl/A/itran/i_tran_materials/angular/ang/package.json
+5 warn package.json graphics@1.0.0 No repository field.
+6 warn package.json graphics@1.0.0 No README data
+7 verbose installManyTop reading scoped package data from /home/dzianisl/A/itran/i_tran_materials/angular/ang/node_modules/angular-route/package.json
+8 verbose installManyTop reading scoped package data from /home/dzianisl/A/itran/i_tran_materials/angular/ang/node_modules/express/package.json
+9 verbose installManyTop reading scoped package data from /home/dzianisl/A/itran/i_tran_materials/angular/ang/node_modules/fs/package.json
+10 verbose installManyTop reading scoped package data from /home/dzianisl/A/itran/i_tran_materials/angular/ang/node_modules/handlebars/package.json
+11 verbose installManyTop reading scoped package data from /home/dzianisl/A/itran/i_tran_materials/angular/ang/node_modules/http/package.json
+12 verbose installManyTop reading scoped package data from /home/dzianisl/A/itran/i_tran_materials/angular/ang/node_modules/jade/package.json
+13 info package.json fs@0.0.2 fs is also the name of a node core module.
+14 info package.json fs@0.0.2 No description
+15 info package.json fs@0.0.2 No repository field.
+16 info package.json http@0.0.0 http is also the name of a node core module.
+17 info package.json http@0.0.0 No description
+18 info package.json http@0.0.0 No repository field.
+19 verbose readDependencies loading dependencies from /home/dzianisl/A/itran/i_tran_materials/angular/ang/package.json
+20 silly cache add args [ 'angular-route.js', null ]
+21 verbose cache add spec angular-route.js
+22 silly cache add parsed spec Result {
+22 silly cache add   raw: 'angular-route.js',
+22 silly cache add   scope: null,
+22 silly cache add   name: 'angular-route.js',
+22 silly cache add   rawSpec: '',
+22 silly cache add   spec: 'latest',
+22 silly cache add   type: 'tag' }
+23 silly addNamed angular-route.js@latest
+24 verbose addNamed "latest" is being treated as a dist-tag for angular-route.js
+25 info addNameTag [ 'angular-route.js', 'latest' ]
+26 silly mapToRegistry name angular-route.js
+27 silly mapToRegistry using default registry
+28 silly mapToRegistry registry https://registry.npmjs.org/
+29 silly mapToRegistry data Result {
+29 silly mapToRegistry   raw: 'angular-route.js',
+29 silly mapToRegistry   scope: null,
+29 silly mapToRegistry   name: 'angular-route.js',
+29 silly mapToRegistry   rawSpec: '',
+29 silly mapToRegistry   spec: 'latest',
+29 silly mapToRegistry   type: 'tag' }
+30 silly mapToRegistry uri https://registry.npmjs.org/angular-route.js
+31 verbose addNameTag registry:https://registry.npmjs.org/angular-route.js not in flight; fetching
+32 verbose request uri https://registry.npmjs.org/angular-route.js
+33 verbose request no auth needed
+34 info attempt registry request try #1 at 19:20:02
+35 verbose request using bearer token for auth
+36 verbose request id abd63ca998f7f7c3
+37 http request GET https://registry.npmjs.org/angular-route.js
+38 http 404 https://registry.npmjs.org/angular-route.js
+39 verbose headers { 'content-type': 'application/json',
+39 verbose headers   'cache-control': 'max-age=0',
+39 verbose headers   'content-length': '2',
+39 verbose headers   'accept-ranges': 'bytes',
+39 verbose headers   date: 'Mon, 25 Jul 2016 16:20:03 GMT',
+39 verbose headers   via: '1.1 varnish',
+39 verbose headers   connection: 'keep-alive',
+39 verbose headers   'x-served-by': 'cache-ams4141-AMS',
+39 verbose headers   'x-cache': 'MISS',
+39 verbose headers   'x-cache-hits': '0',
+39 verbose headers   'x-timer': 'S1469463603.146121,VS0,VE715',
+39 verbose headers   vary: 'Accept-Encoding' }
+40 silly get cb [ 404,
+40 silly get   { 'content-type': 'application/json',
+40 silly get     'cache-control': 'max-age=0',
+40 silly get     'content-length': '2',
+40 silly get     'accept-ranges': 'bytes',
+40 silly get     date: 'Mon, 25 Jul 2016 16:20:03 GMT',
+40 silly get     via: '1.1 varnish',
+40 silly get     connection: 'keep-alive',
+40 silly get     'x-served-by': 'cache-ams4141-AMS',
+40 silly get     'x-cache': 'MISS',
+40 silly get     'x-cache-hits': '0',
+40 silly get     'x-timer': 'S1469463603.146121,VS0,VE715',
+40 silly get     vary: 'Accept-Encoding' } ]
+41 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/angular-route.js
+41 verbose stack     at makeError (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+41 verbose stack     at CachingRegistryClient.<anonymous> (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:242:14)
+41 verbose stack     at Request._callback (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+41 verbose stack     at Request.self.callback (/usr/lib/node_modules/npm/node_modules/request/request.js:200:22)
+41 verbose stack     at emitTwo (events.js:87:13)
+41 verbose stack     at Request.emit (events.js:172:7)
+41 verbose stack     at Request.<anonymous> (/usr/lib/node_modules/npm/node_modules/request/request.js:1067:10)
+41 verbose stack     at emitOne (events.js:82:20)
+41 verbose stack     at Request.emit (events.js:169:7)
+41 verbose stack     at IncomingMessage.<anonymous> (/usr/lib/node_modules/npm/node_modules/request/request.js:988:12)
+42 verbose statusCode 404
+43 verbose pkgid angular-route.js
+44 verbose cwd /home/dzianisl/A/itran/i_tran_materials/angular/ang
+45 error Linux 3.19.0-65-generic
+46 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "angular-route.js"
+47 error node v4.4.7
+48 error npm  v2.15.8
+49 error code E404
+50 error 404 Registry returned 404 for GET on https://registry.npmjs.org/angular-route.js
+50 error 404
+50 error 404 'angular-route.js' is not in the npm registry.
+50 error 404 You should bug the author to publish it (or use the name yourself!)
+50 error 404 It was specified as a dependency of 'graphics'
+50 error 404
+50 error 404 Note that you can also install from a
+50 error 404 tarball, folder, http url, or git url.
+51 verbose exit [ 1, true ]
