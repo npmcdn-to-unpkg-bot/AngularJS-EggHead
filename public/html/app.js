@@ -168,8 +168,13 @@ myApp.config(function($routeProvider){
         {
             templateUrl:"app.html",
             controller:"appCtrl"
-        }
-    );
+        })
+        .when('/hz',{
+            template:"he he"
+        })
+        .otherwise({
+            template:"not found!"
+        });
 
 
 });
