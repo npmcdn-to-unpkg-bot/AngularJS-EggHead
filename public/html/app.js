@@ -1,17 +1,47 @@
 var myApp = angular.module("app",["ngRoute"]);
 
-myApp.factory('game',function(){
+
+
+myApp.directive("country",function(){
     return {
-        title: "he he he"
+        restrict:"E",
+         
+        controller:function(){
+            this.sayAboutCountry = function(){
+                console.log("Alabaha");
+                return "Alabaha";
+            }
+        }
     }
 });
-myApp.controller("appCtrl",function($scope,$injector){
-  
-   $injector.invoke(function(game){
+myApp.directive("state",function(){
 
-        alert(game);
-        $scope.game = game.title;
-
-   });
+        return {
+            restrict:"E",
+            require:"^country",
+          
+            controller:function(){
+                this.sayAboutState = function(){
+                    console.log("OgaPoga");
+                    return "OgaPoga";
+                }
+            }
+        }
 
 });
+myApp.directive("city",function(){
+        return {
+            restrict:"E",
+            require:["^country","^state"],
+            template:"<div style='cursor:pointer' ng-click='he()'>He</div>",
+            link:function(scope,elem,attrs,ctrl){
+                scope.he = function(){
+                    var c = ctrl[0].sayAboutCountry();
+                    var s = ctrl[1].sayAboutState();
+                    console.log(c+" "+s);
+                };
+              
+            }
+        }
+    
+    });
