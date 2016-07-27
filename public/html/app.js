@@ -1,26 +1,17 @@
 var myApp = angular.module("app",["ngRoute"]);
 
-myApp.provider("game",function(){
-    var type;
+myApp.factory('game',function(){
     return {
-        setType:function(value){
-            type = value;
-        },
-        $get:function(){
-            return {
-                title:type + "Game"
-            }
-        }
+        title: "he he he"
     }
 });
-
-myApp.config(function(gameProvider){
-    
-    gameProvider.setType("He he he");
-
-});
-myApp.controller("appCtrl",function($scope,game){
+myApp.controller("appCtrl",function($scope,$injector){
   
-   $scope.game = game.title;
+   $injector.invoke(function(game){
+
+        alert(game);
+        $scope.game = game.title;
+
+   });
 
 });
